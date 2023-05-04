@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.App-header {
+  position: relative;
+  background-color: rgb(50, 50, 80);
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #eee;
+}
+
+.App-name {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translate(0, -50%);
+  margin: 0;
+}
+
+.App-content {
+  background-color: rgb(80, 80, 140);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px;
+  gap: 60px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  overflow: auto;
+}
