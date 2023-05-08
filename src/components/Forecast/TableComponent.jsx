@@ -4,18 +4,29 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  withStyles,
 } from "@material-ui/core";
 import PropTypes from "prop-types";
+import { WeatherIcon } from "./WeatherIcon";
+
+import styles from "./Forecast.module.css";
+
+const StyledTableCell = withStyles({
+  root: {
+    color: "#eee",
+    fontSize: 20,
+  },
+})(TableCell);
 
 function TableComponent({ forecastList }) {
   return (
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>Date and Time</TableCell>
-          <TableCell>Min Temperature</TableCell>
-          <TableCell>Max Temperature</TableCell>
-          <TableCell>Weather Description</TableCell>
+          <StyledTableCell>Date and Time</StyledTableCell>
+          <StyledTableCell>Min Temperature</StyledTableCell>
+          <StyledTableCell>Max Temperature</StyledTableCell>
+          <StyledTableCell>Weather Description</StyledTableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -23,10 +34,15 @@ function TableComponent({ forecastList }) {
           .filter((_, index) => index % 8 === 0)
           .map((forecastInfo) => (
             <TableRow key={forecastInfo.dateString}>
-              <TableCell>{forecastInfo.dateString}</TableCell>
-              <TableCell>{forecastInfo.tempMin}</TableCell>
-              <TableCell>{forecastInfo.tempMax}</TableCell>
-              <TableCell>{forecastInfo.description}</TableCell>
+              <StyledTableCell>{forecastInfo.dateString}</StyledTableCell>
+              <StyledTableCell>{forecastInfo.tempMin}</StyledTableCell>
+              <StyledTableCell>{forecastInfo.tempMax}</StyledTableCell>
+              <StyledTableCell>
+                <div className={styles.descriptionContainer}>
+                  <WeatherIcon description={forecastInfo.description} />
+                  {forecastInfo.description}
+                </div>
+              </StyledTableCell>
             </TableRow>
           ))}
       </TableBody>
